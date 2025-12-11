@@ -53,3 +53,56 @@
                             v
                      [ External APIs ]
              (NewsAPI, Sightengine, SMTP)
+🔧 Installation & Setup
+Prerequisites
+Python 3.x
+
+MySQL Server
+
+Git
+
+Step 1: Clone the Repository
+Bash
+
+git clone [https://github.com/your-username/Pulse-News-App.git](https://github.com/your-username/Pulse-News-App.git)
+cd Pulse-News-App
+Step 2: Set Up Virtual Environment
+Bash
+
+python -m venv venv
+# Windows
+.\venv\Scripts\activate
+# Mac/Linux
+source venv/bin/activate
+Step 3: Install Dependencies
+Bash
+
+pip install -r requirements.txt
+Step 4: Configure Environment Variables
+Create a .env file in the root directory and add your keys:
+
+Ini, TOML
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+DB_NAME=pulse_db
+
+NEWS_API_KEY=your_newsapi_key
+SIGHTENGINE_USER=your_sightengine_user
+SIGHTENGINE_SECRET=your_sightengine_secret
+
+MAIL_USERNAME=your_email@gmail.com
+MAIL_PASSWORD=your_app_password
+Step 5: Database Setup
+Open MySQL Workbench.
+
+Run the schema.sql script (included in the repo) to create tables.
+
+Run seed_db.py to populate initial news content (optional).
+
+Step 6: Run the App
+Bash
+
+python app.py
+Visit http://127.0.0.1:5000 in your browser.
