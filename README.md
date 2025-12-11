@@ -2,87 +2,82 @@
 
 **Pulse** is a modern, secure, and intelligent social news aggregation platform designed to combat algorithmic bias and unsafe content. Built with **Flask**, **MySQL**, and **AI-powered moderation**, Pulse delivers a premium user experience with a "Cyber-Luxury" aesthetic.
 
- 
-
 ---
 
 ## 🚀 Key Features
 
-### 🛡️ **Security & Identity**
-- **Two-Factor Authentication (2FA):** Optional security layer using Email OTP.
-- **Email Verification:** Secure signup process with 6-digit verification codes via SMTP.
-- **Privacy Controls:** Switch between **Public** and **Private** accounts. Private profiles require "Follow Requests."
+### 🛡️ Security & Identity
+- **Two-Factor Authentication (2FA):** Email OTP security.
+- **Email Verification:** 6-digit verification system using SMTP.
+- **Privacy Controls:** Switch between **Public** and **Private** accounts with follow requests.
 
-### 🤖 **AI Content Moderation**
-- **Real-Time Scanning:** All user uploads (Images/Videos) are scanned instantly using the **Sightengine API**.
-- **Safety Gate:** Content flagged as Nudity, Violence, or Offensive is automatically blocked before posting.
+### 🤖 AI Content Moderation
+- **Real-Time Content Scanning** using **Sightengine API**.
+- Blocks **Nudity, Violence, Offensive Media** before posting.
 
-### 🌐 **The Social Ecosystem**
-- **Chronological Feed:** No algorithmic bias. See posts in real-time order.
-- **Smart Interactions:** - **Like & Dislike:** Mutually exclusive reactions (toggling one removes the other).
-  - **Reposts:** Share news to your profile with full attribution to the original author.
-  - **Comments:** Engage in discussions on any news card.
-- **WhatsApp Integration:** Direct deep-link sharing for viral reach.
+### 🌐 The Social Ecosystem
+- **Chronological Feed:** No algorithmic bias.
+- **Smart Interactions:**
+  - Like / Dislike (mutually exclusive)
+  - Reposts with attribution
+  - Comment system  
+- **WhatsApp Deep-Link Sharing**
 
-### 🎨 **Premium UI/UX**
-- **Cyber-Luxury Theme:** A sophisticated Deep Black, Lavender, and Silver aesthetic.
-- **Glassmorphism:** Modern, translucent card designs.
-- **Responsive:** Fully optimized for Desktop, Tablet, and Mobile.
+### 🎨 Premium UI/UX
+- **Cyber-Luxury Theme:** Deep Black · Lavender · Silver  
+- **Glassmorphism Cards**  
+- **Fully Responsive**
 
 ---
 
 ## 🛠️ Technology Stack
 
-| Component | Technology Used |
-| :--- | :--- |
-| **Backend** | Python, Flask (Micro-framework) |
-| **Database** | MySQL (Relational DB) |
-| **Frontend** | HTML5, CSS3 (Custom Design), JavaScript (Vanilla) |
-| **AI Engine** | Sightengine API (Content Moderation) |
-| **Data Source** | NewsAPI (Global Headlines) |
-| **Email** | SMTP (Gmail) for OTPs |
+| Component | Technology |
+|----------|------------|
+| Backend | Flask (Python) |
+| Database | MySQL |
+| Frontend | HTML, CSS, JavaScript |
+| AI Engine | Sightengine API |
+| News Source | NewsAPI |
+| Email | Gmail SMTP |
 
 ---
 
 ## 🏗️ System Architecture
 
 ```text
-[ User Client ] <---> [ Flask Server ] <---> [ MySQL Database ]
-(HTML/JS UI)          (Python Logic)         (User/Post Data)
-                            |
-                            v
-                     [ External APIs ]
-             (NewsAPI, Sightengine, SMTP)
+[ Client ] <----> [ Flask Server ] <----> [ MySQL Database ]
+                      |
+                      v
+              [ External APIs ]
+      (NewsAPI, Sightengine, SMTP)
 🔧 Installation & Setup
-Prerequisites
-Python 3.x
+Below steps guide you through setting up Pulse on your system.
 
-MySQL Server
-
-Git
-
-Step 1: Clone the Repository
-Bash
-
-git clone [https://github.com/your-username/Pulse-News-App.git](https://github.com/your-username/Pulse-News-App.git)
+📥 1️⃣ Clone the Repository
+ 
+Copy code
+git clone https://github.com/your-username/Pulse-News-App.git
 cd Pulse-News-App
-Step 2: Set Up Virtual Environment
-Bash
-
+🧱 2️⃣ Create & Activate Virtual Environment
+bash
+Copy code
 python -m venv venv
+
 # Windows
-.\venv\Scripts\activate
+venv\Scripts\activate
+
 # Mac/Linux
 source venv/bin/activate
-Step 3: Install Dependencies
-Bash
-
+📦 3️⃣ Install Dependencies
+bash
+Copy code
 pip install -r requirements.txt
-Step 4: Configure Environment Variables
-Create a .env file in the root directory and add your keys:
+🔐 4️⃣ Setup Environment Variables
+Create a file named .env in the root project folder:
 
-Ini, TOML
-
+ini
+Copy code
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=your_mysql_password
@@ -94,15 +89,55 @@ SIGHTENGINE_SECRET=your_sightengine_secret
 
 MAIL_USERNAME=your_email@gmail.com
 MAIL_PASSWORD=your_app_password
-Step 5: Database Setup
-Open MySQL Workbench.
 
-Run the schema.sql script (included in the repo) to create tables.
+SECRET_KEY=your_flask_secret_key
+🗄️ 5️⃣ Set Up the Database
+Open MySQL Workbench
 
-Run seed_db.py to populate initial news content (optional).
+Run the following:
 
-Step 6: Run the App
-Bash
+sql
+Copy code
+SOURCE database/schema.sql;
+(Optional)
 
+bash
+Copy code
+python database/seed_db.py
+▶️ 6️⃣ Run the Application
+bash
+Copy code
 python app.py
-Visit http://127.0.0.1:5000 in your browser.
+Now visit:
+
+cpp
+Copy code
+http://127.0.0.1:5000
+📂 Folder Structure
+pgsql
+Copy code
+Pulse/
+│
+├── app.py
+├── config.py
+├── requirements.txt
+├── .env
+│
+├── static/
+│   ├── css/
+│   ├── js/
+│   └── uploads/
+│
+├── templates/
+│   ├── login.html
+│   ├── feed.html
+│   └── profile.html
+│
+├── database/
+│   ├── schema.sql
+│   └── seed_db.py
+│
+└── utils/
+    ├── sightengine.py
+    ├── email_sender.py
+    └── auth.py
